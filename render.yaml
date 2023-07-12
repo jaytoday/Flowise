@@ -10,10 +10,7 @@ services:
     mountPath: /root/.flowise
     sizeGB: 1
   numInstances: 1
-  routes:
-  - path: /flowise
-    port: 3000
-
+ 
 - name: langchain
   type: web
   runtime: python
