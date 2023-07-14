@@ -9,13 +9,12 @@ services:
     healthCheckPath: /health
     autoDeploy: false
  
- 
-- name: langchain
-  type: web
-  runtime: python
-  buildCommand: pip install -r requirements.txt
-  startCommand: uvicorn app:app --host 0.0.0.0 --port 8000
-  repo: https://github.com/derekcheungsa/langchain-fastapi
-  numInstances: 1
+  - name: langchain
+    type: web
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port 8000
+    repo: https://github.com/derekcheungsa/langchain-fastapi
+    numInstances: 1
 
   
