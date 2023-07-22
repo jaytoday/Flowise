@@ -2,19 +2,23 @@ services:
   - type: web
     name: flowise-docker-render
     runtime: docker
-    plan: free
+    plan: starter
     dockerfilePath: ./Dockerfile
     repo: https://github.com/FlowiseAI/Flowise
     branch: main
     healthCheckPath: /health
     autoDeploy: false
+    disk:
+      name: flowise-disk
+      mountPath: /opt/render/.flowise
+      sizeGB: 1
  
-  - name: llama-index
+  - name: chainlit
     type: web
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app:app --host 0.0.0.0 --port 8000
-    repo: https://github.com/derekcheungsa/langchain-fastapi
+    startCommand: chainlit hello
+    repo: https://github.com/derekcheungsa/chainlit.git
     numInstances: 1
 
   
