@@ -9,7 +9,7 @@ services:
     healthCheckPath: /health
     autoDeploy: false
  
-  - name: langchain
+  - name: llama-index
     type: web
     runtime: python
     buildCommand: pip install -r requirements.txt
