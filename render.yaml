@@ -2,7 +2,7 @@ services:
   - type: web
     name: flowise-docker-render
     runtime: docker
-    plan: free
+    plan: starter
     dockerfilePath: ./Dockerfile
     repo: https://github.com/FlowiseAI/Flowise
     branch: main
