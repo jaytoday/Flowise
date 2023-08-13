@@ -15,6 +15,18 @@ services:
       name: flowise-disk
       mountPath: /opt/render/.flowise
       sizeGB: 1
+ 
+  - name: chainlit
+    type: web
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: chainlit run app.py -h --port $PORT
+    repo: https://github.com/derekcheungsa/life-coach
+    numInstances: 1
+    envVars:
+     - key: PYTHON_VERSION
+       value: 3.11.0
 
   - type: web
     name: chroma
