@@ -1,0 +1,23 @@
+services:
+- type: web
+  name: flowise
+  runtime: docker
+  dockerfilePath: ./docker/Dockerfile # Assuming Dockerfile in the same directory as render.yaml
+  buildCommand: docker build --no-cache -t flowise .
+  disk:
+    name: flowise-disk
+    mountPath: /opt/render/.flowise
+    sizeGB: 1
+  numInstances: 1
+ 
+
+
+- name: langchain
+  type: web
+  runtime: python
+  buildCommand: pip install -r requirements.txt
+  startCommand: uvicorn app:app --host 0.0.0.0 --port 8000
+  repo: https://github.com/derekcheungsa/langchain-fastapi
+  numInstances: 1
+
+  
